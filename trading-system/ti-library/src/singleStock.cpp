@@ -947,7 +947,7 @@ public:
                 b += dm;
             }
 
-            b / 14;
+            b = b / 14;
 
             return a - b + cdm;
 
@@ -1464,9 +1464,9 @@ public:
         return obv(obvAmount, length - 1, day - 1) + amount;
     }
 
-    double obv(int day, int lenght, double obv) {
-        if (length == 0) return 0;
-    }
+    // double obv(int day, int lenght, double obv) {
+    //     if (lenght == 0) return 0;
+    // }
 
     /** NOTE: it is possible to have 'failure' as a valid return but the chances are very low
      * user interface for finding the On-Balance Volume

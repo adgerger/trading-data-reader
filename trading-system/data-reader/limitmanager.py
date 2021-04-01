@@ -13,7 +13,7 @@ class LimitManager:
     DAILY_MAX = 20000
     BANDWITH = 5.00
 
-    API_TOKENS = ["0a1d713c046f36d549361069b68441e40b33ee74", "0a1d713c046f36d549361069b68441e40b33ee74"]
+    API_TOKENS = ["0a1d713c046f36d549361069b68441e40b33ee74", "API-KEY2"]
 
     TOKEN = {}
 
@@ -25,7 +25,6 @@ class LimitManager:
         if os.path.isfile('../../data/api-info.txt'): # Assumes if the file exists, the data in it is not corrupt
             with open ('../../data/api-info.txt', 'r+') as fp:
                 lines = fp.readlines()
-                print(lines)
                 self.current_token = int(lines[3].strip('\n'))
 
                 self.TOKEN[self.API_TOKENS[self.current_token]]["HOURLY_REQ"] = int(lines[0].strip('\n'))
@@ -90,7 +89,6 @@ class LimitManager:
         return self.current_token
 
     def reset(self):
-        print(self.current_token)
         self.TOKEN[self.API_TOKENS[self.current_token]]["HOURLY_REQ"] = 0
         self.TOKEN[self.API_TOKENS[self.current_token]]["DAILY_REQ"] = 0
         self.TOKEN[self.API_TOKENS[self.current_token]]["BANDWITH"] = 0

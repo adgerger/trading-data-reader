@@ -23,12 +23,9 @@ class DataFetcher(ClientBase):
         return self._get_api_info()
 
 
-    def fetch_ticker_catalog(self, assetTypes=[]):
+    def fetch_ticker_catalog(self, types=[]):
         """
         Returns a list of all the tickers supported.
-        params:
-        - assetTypes: list to filter the types of tickers getting returned
-            options: 'Stock', 'ETF', 'Mutual Fund' returns all of them if no parameter specified.
         """
 
         listing_url = "https://apimedia.tiingo.com/docs/tiingo/daily/supported_tickers.zip"
@@ -39,12 +36,11 @@ class DataFetcher(ClientBase):
 
         reader = csv.DictReader(raw_csv)
 
-        if not len(assetTypes):
+        if not len(types):
             return [json.dumps(row) for row in reader]
 
-        assetTypesSet = set(assetTypes)
-        return [json.dumps(row) for row in reader
-                if row.get('assetType') in assetTypesSet]
+        type_set = set(types)
+        return [json.dumps(row) for row in reader if row.get('assetType') in type_set]
 
 
     def fetch_metadata(self, ticker, format='json'):
@@ -130,17 +126,30 @@ def main():
 
     ticker = "AAPL"
 
-    # Uncomment to fetch all the supported tickers.
     #print(cl.fetch_ticker_catalog())
 
-    # Uncomment to fetch the meta data for the given ticker
-    print(cl.fetch_metadata(ticker))
+    #print(cl.fetch_metadata(ticker))
 
-    # # Uncomment to fetch the current price for the given ticker
-    # print(cl.fetch_latest_price(ticker))
+    #print(cl.fetch_latest_price(ticker))
 
-    # Uncomment to fetch all historic prices for a given ticker
-    # print(cl.fetch_historic_prices(ticker))
+    #print(cl.fetch_historic_prices(ticker))
+    
+    #print(fetch_option_chain(ticker))
+    
+    #print(fetch_option_dates(ticker))
+    
+    print(fetch_recommendations(ticker))
+    
+    #print(fetch_holder_info(ticker))
+    
+    #print(fetch_instituional_holders(ticker))
+    
+    print(fetch_sustainability_info(ticker))
+    
+    #print(fetch_isin(ticker))
+
+
+
 
 
 
