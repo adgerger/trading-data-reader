@@ -13,7 +13,7 @@ class LimitManager:
     DAILY_MAX = 20000
     BANDWITH = 5.00
 
-    API_TOKENS = ["0a1d713c046f36d549361069b68441e40b33ee74", "API-KEY2"]
+    API_TOKENS = ["API-KEY1", "API-KEY2"]
 
     TOKEN = {}
 
